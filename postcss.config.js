@@ -2,6 +2,7 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
+    "postcss-flexbugs-fixes": {},
     "postcss-preset-env": {
       autoprefixer: {
         flexbox: "no-2009",
@@ -11,6 +12,5 @@ module.exports = {
         "custom-properties": false,
       },
     },
-    "postcss-flexbugs-fixes": {},
   },
 };
