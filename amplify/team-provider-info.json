@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-stefanotambelliniweb-dev-95613-authRole",
+      "UnauthRoleArn": "arn:aws:iam::722947905889:role/amplify-stefanotambelliniweb-dev-95613-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::722947905889:role/amplify-stefanotambelliniweb-dev-95613-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-stefanotambelliniweb-dev-95613-deployment",
+      "UnauthRoleName": "amplify-stefanotambelliniweb-dev-95613-unauthRole",
+      "StackName": "amplify-stefanotambelliniweb-dev-95613",
+      "StackId": "arn:aws:cloudformation:eu-central-1:722947905889:stack/amplify-stefanotambelliniweb-dev-95613/94fd1d00-0d55-11ec-b869-06081d79189e",
+      "AmplifyAppId": "d2f54b4jt5t30r"
+    },
+    "categories": {
+      "auth": {
+        "stefanotambelliniwebb15131cb": {}
+      }
+    }
+  }
+}
