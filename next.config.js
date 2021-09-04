@@ -17,4 +17,7 @@ module.exports = withBundleAnalyzer({
 
     return config;
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 });

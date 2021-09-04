@@ -4,9 +4,7 @@ import { isProduction } from "../../lib/globals";
 
 const Analytics = () => {
   return (
-    <>
-      {isProduction && siteMetadata.analytics.googleAnalyticsId && <GA />}
-    </>
+    <>{isProduction && siteMetadata.analytics.googleAnalyticsId && <GA />}</>
   );
 };
 

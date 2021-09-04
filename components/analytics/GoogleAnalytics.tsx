@@ -1,6 +1,11 @@
 import Script from "next/script";
-
 import siteMetadata from "../../data/siteMetadata";
+
+declare global {
+  interface Window {
+    gtag: any;
+  }
+}
 
 const GAScript = () => {
   return (
@@ -10,14 +15,12 @@ const GAScript = () => {
         src={`https://www.googletagmanager.com/gtag/js?id=${siteMetadata.analytics.googleAnalyticsId}`}
       />
 
-      <Script id="googleTagLoader" strategy="lazyOnload">
+      <Script strategy="lazyOnload" id="googleTagLoader">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${siteMetadata.analytics.googleAnalyticsId}', {
-              page_path: window.location.pathname,
-            });
+            gtag('config', '${siteMetadata.analytics.googleAnalyticsId}');
         `}
       </Script>
     </>
@@ -27,7 +30,12 @@ const GAScript = () => {
 export default GAScript;
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export const logEvent = (action, category, label, value) => {
+export const logEvent = (
+  action: string,
+  category: string,
+  label: string,
+  value: number
+) => {
   window.gtag?.("event", action, {
     event_category: category,
     event_label: label,

@@ -1,8 +1,8 @@
 export default {
   title: "Stefano Tambellini",
   author: "Stefano Tambellini",
-  headerTitle: "TailwindBlog",
-  description: "A blog created with Next.js and Tailwind.css",
+
+  description: "Ciao, sono Stefano, e questo è il mio sito!",
 
   siteUrl: "https://tailwind-nextjs-starter-blog.vercel.app",
   siteRepo: "https://github.com/timlrx/tailwind-nextjs-starter-blog",
@@ -19,6 +19,6 @@ export default {
   locale: "en-US",
 
   analytics: {
-    googleAnalyticsId: "", // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: process.env.GOOGLE_ANALYTICS_ID,
   },
 };
