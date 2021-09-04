@@ -1,11 +1,10 @@
+import { ThemeProvider } from "next-themes";
+import { AppProps } from "next/dist/shared/lib/router/router";
+import Head from "next/head";
+import Analytics from "../components/analytics";
+
 import "../css/tailwind.css";
 import "../css/global.css";
-
-import { ThemeProvider } from "next-themes";
-import Head from "next/head";
-
-import Analytics from "../components/analytics";
-import { AppProps } from "next/dist/shared/lib/router/router";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

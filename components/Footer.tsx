@@ -1,7 +1,8 @@
-import siteMetadata from "../data/siteMetadata";
-import SocialIcon from "./SocialIcon";
-import CopyrightWording from "./CopyrightWording";
 import { FunctionComponent } from "react";
+import siteMetadata from "../data/siteMetadata";
+import CopyrightWording from "./CopyrightWording";
+import SocialIcon from "./SocialIcon";
+import ThemeSwitch from "./ThemeSwitch";
 
 /**
  * Footer che inserisco alla base della pagina per indirizzare a tutti i social e inserire dicitura di copyright
@@ -24,6 +25,8 @@ const Footer: FunctionComponent = () => {
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
           <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
         </div>
+
+        <ThemeSwitch />
 
         <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>

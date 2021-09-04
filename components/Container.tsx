@@ -1,21 +1,12 @@
 import { FunctionComponent } from "react";
-import SectionContainer from "./SectionContainer";
-import ThemeSwitch from "./ThemeSwitch";
 
 const Container: FunctionComponent = ({ children }) => {
   return (
-    <SectionContainer>
-      <div className="flex flex-col justify-between h-screen">
-        <header className="flex items-center justify-between py-10">
-          <div className="flex items-center text-base leading-5">
-            <div>Ciao!</div>
-
-            <ThemeSwitch />
-          </div>
-        </header>
-        <main className="mb-auto">{children}</main>
+    <div className="container mx-auto px-4">
+      <div className="max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0">
+        {children}
       </div>
-    </SectionContainer>
+    </div>
   );
 };
 
