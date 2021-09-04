@@ -1,13 +1,14 @@
 import siteMetadata from "../data/siteMetadata";
 import SocialIcon from "./SocialIcon";
 import CopyrightWording from "./CopyrightWording";
+import { FunctionComponent } from "react";
 
 /**
  * Footer che inserisco alla base della pagina per indirizzare a tutti i social e inserire dicitura di copyright
  *
  * Attenzione: inserisco più link possibili per incrementare SEO, non sono necessariamente link di interesse!
  */
-export default function Footer() {
+const Footer: FunctionComponent = () => {
   return (
     <footer>
       <div className="flex flex-col items-center mt-16">
@@ -32,4 +33,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

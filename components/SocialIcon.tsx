@@ -5,6 +5,7 @@ import Youtube from "../assets/social-icons/youtube.svg";
 import Linkedin from "../assets/social-icons/linkedin.svg";
 import Twitter from "../assets/social-icons/twitter.svg";
 import Instagram from "../assets/social-icons/instagram.svg";
+import { FunctionComponent } from "react";
 
 // https://simpleicons.org/
 
@@ -18,7 +19,13 @@ const components = {
   instagram: Instagram,
 };
 
-const SocialIcon = ({
+export interface SocialIconProps {
+  kind: string;
+  href: string;
+  size: number;
+}
+
+const SocialIcon: FunctionComponent<SocialIconProps> = ({
   kind,
   href,
   size = 8,

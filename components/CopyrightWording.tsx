@@ -1,6 +1,7 @@
+import { FunctionComponent } from "react";
 import siteMetadata from "../data/siteMetadata";
 
-const CopyrightWording = () => {
+const CopyrightWording: FunctionComponent = () => {
   return (
     <span>{`Copyright © ${new Date().getFullYear()} · ${
       siteMetadata.author

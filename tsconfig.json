@@ -1,5 +1,5 @@
 {
-  "include": ["types/**.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["types/**.d.ts", "**/*.ts", "**/*.tsx", "components/SEO.jsx"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
