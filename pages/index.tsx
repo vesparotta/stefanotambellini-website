@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -7,7 +8,7 @@ const Home: NextPage = () => {
         <div>TEST</div>
       </main>
 
-      <footer>FOOTER</footer>
+      <Footer />
     </div>
   );
 };

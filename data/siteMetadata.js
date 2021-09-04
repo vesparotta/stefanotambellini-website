@@ -3,7 +3,6 @@ const siteMetadata = {
   author: "Tails Azimuth",
   headerTitle: "TailwindBlog",
   description: "A blog created with Next.js and Tailwind.css",
-  language: "en-us",
   siteUrl: "https://tailwind-nextjs-starter-blog.vercel.app",
   siteRepo: "https://github.com/timlrx/tailwind-nextjs-starter-blog",
   siteLogo: "/static/images/logo.png",
@@ -15,11 +14,9 @@ const siteMetadata = {
   facebook: "https://facebook.com",
   youtube: "https://youtube.com",
   linkedin: "https://www.linkedin.com",
+  language: "en-us",
   locale: "en-US",
   analytics: {
-    // supports plausible, simpleAnalytics or googleAnalytics
-    plausibleDataDomain: "", // e.g. tailwind-nextjs-starter-blog.vercel.app
-    simpleAnalytics: false, // true or false
     googleAnalyticsId: "", // e.g. UA-000000-2 or G-XXXXXXX
   },
 };
