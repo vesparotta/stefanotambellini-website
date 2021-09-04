@@ -4,6 +4,7 @@ import Facebook from "../assets/social-icons/facebook.svg";
 import Youtube from "../assets/social-icons/youtube.svg";
 import Linkedin from "../assets/social-icons/linkedin.svg";
 import Twitter from "../assets/social-icons/twitter.svg";
+import Instagram from "../assets/social-icons/instagram.svg";
 
 // https://simpleicons.org/
 
@@ -14,6 +15,7 @@ const components = {
   youtube: Youtube,
   linkedin: Linkedin,
   twitter: Twitter,
+  instagram: Instagram,
 };
 
 const SocialIcon = ({
