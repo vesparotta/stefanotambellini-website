@@ -2,6 +2,13 @@ html {
   scroll-behavior: smooth;
 }
 
+// DA FIXARE
+:not(.dark) .mix-blend-exclusion svg {
+  filter: invert(100%);
+}
+
+/* GLASS */
+
 .glass {
   position: relative;
   z-index: 1;
@@ -25,6 +32,8 @@ html {
 .dark .glass:before {
   box-shadow: inset 0 0 2000px rgba(50, 50, 50, 0.5);
 }
+
+/* GRID REPEATING */
 
 @keyframes bg-scrolling-reverse {
   100% {

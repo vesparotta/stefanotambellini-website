@@ -17,9 +17,9 @@ const Home: NextPage = () => {
           <ThemeSwitch />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col mix-blend-exclusion text-white">
           <main className="mb-auto">
-            <div className="mix-blend-exclusion text-white">
+            <div>
               <div className="xs:pt-10 md:pt-8">
                 <PageTitle>Ciao!</PageTitle>
                 <div className="pt-5 text-xl md:text-4xl leading-9 sm:leading-10 md:leading-14 tracking-tight">
@@ -49,9 +49,9 @@ const Home: NextPage = () => {
               </div>
             </div>
           </main>
-        </div>
 
-        <Footer />
+          <Footer />
+        </div>
       </Container>
     </>
   );

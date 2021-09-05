@@ -1,6 +1,11 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
+// @ts-ignore
+import vert from "../lib/webgl/shaders/shader.vert?raw";
+// @ts-ignore
+import frag from "../lib/webgl/shaders/shader.frag?raw";
+
 const WebGL: FunctionComponent = () => {
   const mount = useRef<HTMLDivElement>(null);
 
@@ -15,15 +20,29 @@ const WebGL: FunctionComponent = () => {
     let frameId: number | null;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
-    const cube = new THREE.Mesh(geometry, material);
 
-    camera.position.z = 4;
-    scene.add(cube);
-    renderer.setClearColor("#FFFDD0");
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    camera.position.z = 6;
+
+    const uniforms = {
+      uTime: { type: "f", value: 0.0 },
+    };
+
+    const geometry = new THREE.SphereBufferGeometry(1, 64, 64);
+    const material = new THREE.ShaderMaterial({
+      transparent: true,
+      opacity: 0.1,
+      wireframe: false,
+      side: THREE.DoubleSide,
+      uniforms: uniforms,
+      vertexShader: vert,
+      fragmentShader: frag,
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.scale.set(3.28, 2.3, 1);
+    scene.add(mesh);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
 
     const renderScene = () => {
@@ -45,10 +64,12 @@ const WebGL: FunctionComponent = () => {
     };
 
     const animate = () => {
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      material.uniforms.uTime.value += 0.01;
+      mesh.rotation.y += 0.01;
+      mesh.rotation.x += Math.random() / 100;
 
       renderScene();
+
       frameId = window.requestAnimationFrame(animate);
     };
 
@@ -81,7 +102,7 @@ const WebGL: FunctionComponent = () => {
 
       mount.current.removeChild(renderer.domElement);
 
-      scene.remove(cube);
+      scene.remove(mesh);
       geometry.dispose();
       material.dispose();
     };
