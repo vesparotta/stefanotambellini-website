@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "cross-env ANALYZE=true next build",
+    "storybook": "start-storybook --ci -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.4",
@@ -17,12 +19,19 @@
     "three": "^0.132.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@next/bundle-analyzer": "^11.1.2",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/react": "^6.3.8",
     "@svgr/webpack": "^5.5.0",
     "@types/node": "^16.7.10",
     "@types/react": "^17.0.19",
     "@types/three": "^0.131.0",
     "autoprefixer": "^10.3.4",
+    "babel-loader": "^8.2.2",
     "postcss": "^8.3.6",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
