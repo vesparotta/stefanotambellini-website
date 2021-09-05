@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import siteMetadata from "../data/siteMetadata";
 import CopyrightWording from "./CopyrightWording";
-import SocialIcon from "./SocialIcon";
+import SocialIcon from "./SimpleIcon";
 import ThemeSwitch from "./ThemeSwitch";
 
 /**
@@ -19,20 +19,18 @@ const Footer: FunctionComponent = () => {
             href={`mailto:${siteMetadata.email}`}
             size={6}
           />
-          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
           <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
+          <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
+          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-          <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
         </div>
 
-        <ThemeSwitch />
-
-        <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        {/* <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>
             <CopyrightWording></CopyrightWording>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

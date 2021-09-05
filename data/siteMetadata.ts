@@ -4,10 +4,9 @@ export default {
 
   description: "Ciao, sono Stefano, e questo è il mio sito!",
 
-  siteUrl: "https://tailwind-nextjs-starter-blog.vercel.app",
-  siteRepo: "https://github.com/timlrx/tailwind-nextjs-starter-blog",
+  siteUrl: "https://stefanotambellini.it",
 
-  email: "address@yoursite.com",
+  email: "ehi@stefanotambellini.it",
 
   github: "https://github.com/vesparotta",
   twitter: "https://twitter.com/vesparotta",
