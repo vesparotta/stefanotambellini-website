@@ -17,7 +17,7 @@ const Home: NextPage = () => {
           <ThemeSwitch />
         </div>
 
-        <div className="flex flex-col mix-blend-exclusion text-white">
+        <div className="flex flex-col mix-blend-exclusion">
           <main className="mb-auto">
             <div>
               <div className="xs:pt-10 md:pt-8">
