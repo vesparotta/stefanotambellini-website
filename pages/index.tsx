@@ -17,12 +17,14 @@ const Home: NextPage = () => {
           <ThemeSwitch />
         </div>
 
-        <div className="flex flex-col mix-blend-exclusion">
+        <div className="flex flex-col mix-blend-exclusion text-gray-100" style= {{
+          willChange: "opacity"
+        }}>
           <main className="mb-auto">
             <div>
               <div className="xs:pt-10 md:pt-8">
                 <PageTitle>Ciao!</PageTitle>
-                <div className="pt-5 text-xl md:text-4xl leading-9 sm:leading-10 md:leading-14 tracking-tight">
+                <div className="pt-5 text-2xl md:text-4xl leading-9 sm:leading-10 md:leading-14 tracking-tight">
                   <p>
                     Sono{" "}
                     <span className="text-yellow-600">Stefano Tambellini</span>

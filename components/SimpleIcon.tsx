@@ -53,7 +53,7 @@ const SocialIcon: FunctionComponent<SocialIconProps> = ({
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg
-        className={`fill-current text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 h-${size} w-${size}`}
+        className={`fill-current dark:text-gray-900 text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 h-${size} w-${size}`}
       />
     </a>
   );
