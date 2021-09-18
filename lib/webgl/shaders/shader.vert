@@ -15,7 +15,7 @@ void main()
     // modelPosition.y += cos(uv.y + elapsedTime);
     modelPosition.x = sin(modelPosition.y + elapsedTime) + modelPosition.x + sin(elapsedTime);
     modelPosition.z = modelPosition.z + cos(elapsedTime) + cos(modelPosition.y + elapsedTime);
-    // modelPosition.z = sin(modelPosition.x);
+    // modelPosition.z = sin(modelPosition.x) + cos(elapsedTime) ;
 
     vec4 viewPosition = viewMatrix * modelPosition;
     vec4 projectedPosition = projectionMatrix * viewPosition;

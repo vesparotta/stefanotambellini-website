@@ -12,7 +12,7 @@ import ThemeSwitch from "./ThemeSwitch";
 const Footer: FunctionComponent = () => {
   return (
     <footer>
-      <div className="flex flex-col items-center m-8">
+      <div className="flex flex-col mt-8">
         <div className="flex mb-3 space-x-4">
           <SocialIcon
             kind="mail"

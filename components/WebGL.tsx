@@ -21,52 +21,54 @@ const WebGL: FunctionComponent = () => {
 
     const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    camera.position.z = 6;
+    const camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 10000);
+    camera.position.x = 45;
+    camera.position.y = 10;
+    camera.position.z = 30;
+
+    camera.rotation.z = -2;
 
     const uniforms = {
-      uTime: { type: "f", value: 0.0 },
+      iTime: { type: "f", value: 0 },
+      iResolution: { value: new THREE.Vector3() },
     };
 
-    const geometry = new THREE.SphereBufferGeometry(1, 64, 64);
     const material = new THREE.ShaderMaterial({
-      transparent: true,
-      opacity: 0.1,
-      wireframe: false,
       side: THREE.DoubleSide,
       uniforms: uniforms,
+      wireframe: true,
       vertexShader: vert,
       fragmentShader: frag,
     });
+
+    const geometry = new THREE.TorusBufferGeometry(21, 31, 128, 256, 8);
+
     const mesh = new THREE.Mesh(geometry, material);
-    mesh.scale.set(3.28, 2.3, 1);
+    mesh.scale.set(0.8, 0.8, 0.8);
     scene.add(mesh);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      preserveDrawingBuffer: true,
+      precision: "highp",
+      powerPreference: "low-power",
+      logarithmicDepthBuffer: true
+    });
     renderer.setSize(width, height);
 
     const renderScene = () => {
       renderer.render(scene, camera);
     };
 
-    const handleResize = () => {
-      if (!mount || !mount.current) {
-        console.error("Errore!!!");
-        return;
-      }
+    const animate: FrameRequestCallback = (time) => {
+      time *= 0.001;
 
-      width = mount.current.clientWidth;
-      height = mount.current.clientHeight;
-      renderer.setSize(width, height);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderScene();
-    };
+      material.uniforms.iResolution.value.set(width, height, 1);
+      material.uniforms.iTime.value = time;
 
-    const animate = () => {
-      material.uniforms.uTime.value += 0.01;
-      mesh.rotation.y += 0.01;
-      mesh.rotation.x += Math.random() / 100;
+      mesh.rotateX(0.002);
+      mesh.rotateY(-0.004);
 
       renderScene();
 
@@ -85,6 +87,20 @@ const WebGL: FunctionComponent = () => {
       }
 
       frameId = null;
+    };
+
+    const handleResize = () => {
+      if (!mount || !mount.current) {
+        console.error("Errore!!!");
+        return;
+      }
+
+      width = mount.current.clientWidth;
+      height = mount.current.clientHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderScene();
     };
 
     mount.current.appendChild(renderer.domElement);
@@ -118,6 +134,7 @@ const WebGL: FunctionComponent = () => {
         bottom: 0,
         left: 0,
         zIndex: -100,
+        opacity: 1,
       }}
     />
   );

@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         <div className="flex flex-col mix-blend-exclusion text-gray-100" style= {{
           willChange: "opacity"
         }}>
-          <main className="mb-auto">
+          <main className="mb-auto md:w-4/6">
             <div>
               <div className="xs:pt-10 md:pt-8">
                 <PageTitle>Ciao!</PageTitle>
