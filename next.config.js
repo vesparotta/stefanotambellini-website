@@ -15,6 +15,11 @@ module.exports = withBundleAnalyzer({
       use: ["@svgr/webpack"],
     });
 
+    /* config.module.rules.push({
+      test: /\.(woff|woff2|eot|ttf|otf)$/i,
+      type: "asset/resource",
+    }); */
+
     config.module.rules.push({
       resourceQuery: /raw/,
       type: "asset/source",

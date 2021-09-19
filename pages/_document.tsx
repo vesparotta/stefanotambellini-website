@@ -4,7 +4,15 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/Karla/Karla-VariableFont_wght.ttf"
+            as="font"
+            crossOrigin=""
+          />
+        </Head>
+
         <body className="antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
           <Main />
           <NextScript />

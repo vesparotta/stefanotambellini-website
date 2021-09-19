@@ -10,7 +10,7 @@ module.exports = {
         "xs": "580px"
       },
       fontFamily: {
-        sans: [...defaultTheme.fontFamily.sans],
+        sans: ["CustomSans-Bold", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.teal,

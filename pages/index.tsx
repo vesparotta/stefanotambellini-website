@@ -17,19 +17,21 @@ const Home: NextPage = () => {
           <ThemeSwitch />
         </div>
 
-        <div className="flex flex-col mix-blend-exclusion text-gray-100" style= {{
-          willChange: "opacity"
-        }}>
+        <div
+          className="flex flex-col mix-blend-exclusion text-gray-100"
+          style={{
+            willChange: "opacity",
+          }}
+        >
           <main className="mb-auto md:w-4/6">
             <div>
               <div className="xs:pt-10 md:pt-8">
                 <PageTitle>Ciao!</PageTitle>
-                <div className="pt-5 text-2xl md:text-4xl leading-9 sm:leading-10 md:leading-14 tracking-tight">
+                <div className="pt-5 text-2xl md:text-4xl leading-tight sm:leading-snug tracking-tight">
                   <p>
                     Sono{" "}
                     <span className="text-yellow-600">Stefano Tambellini</span>
-                    , un web designer e sviluppatore software con sede a Lucca,
-                    in Toscana.
+                    , un web designer e sviluppatore software con sede a Lucca.
                     <br />
                     Mi piacciono l'arte digitale, la pizza capricciosa e i
                     videogiochi indipendenti.
@@ -38,14 +40,13 @@ const Home: NextPage = () => {
                   <br />
 
                   <p>
-                    Sono sempre alla ricerca di progetti interessanti e di
-                    ispirazione!
+                    Sono sempre alla ricerca di progetti interessanti e
+                    d'ispirazione!
                     <br />
                     Se vuoi collaborare con me o fare due chiacchiere{" "}
                     <CustomLink href={`mailto:${siteMetadata.email}`}>
-                      contattami
+                      contattami!
                     </CustomLink>
-                    , sarò più che felice di risponderti!
                   </p>
                 </div>
               </div>
