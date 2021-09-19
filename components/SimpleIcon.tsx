@@ -46,14 +46,14 @@ const SocialIcon: FunctionComponent<SocialIconProps> = ({
 
   return (
     <a
-      className="text-sm text-gray-500 transition hover:text-gray-600"
+      className="text-sm transition"
       target="_blank"
       rel="noopener noreferrer"
       href={href}
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg
-        className={`fill-current dark:text-gray-900 text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 h-${size} w-${size}`}
+        className={`fill-current text-gray-900 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400 h-${size} w-${size}`}
       />
     </a>
   );

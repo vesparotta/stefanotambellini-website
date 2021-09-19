@@ -6,56 +6,72 @@ import ThemeSwitch from "../components/ThemeSwitch";
 import CustomLink from "../components/CustomLink";
 import siteMetadata from "../data/siteMetadata";
 import WebGL from "../components/WebGL";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
+  const [height, setHeight] = useState<number | null>();
+
+  useEffect(() => {
+    setHeight(document.documentElement?.clientHeight || window.innerHeight);
+
+    window.addEventListener("resize", () => {
+      setHeight(document.documentElement?.clientHeight || window.innerHeight);
+    });
+  }, []);
+
   return (
     <>
-      <WebGL />
+      <div className="flex z-50 fixed">
+        <ThemeSwitch />
+      </div>
 
-      <Container>
-        <div className="pt-5 flex flex-row-reverse">
-          <ThemeSwitch />
-        </div>
+      <div
+        className="flex flex-col justify-end align-center"
+        style={{
+          height: height?.toString() + "px",
+        }}
+      >
+        <WebGL />
 
-        <div
-          className="flex flex-col mix-blend-exclusion text-gray-100"
-          style={{
-            willChange: "opacity",
-          }}
-        >
-          <main className="mb-auto md:w-4/6">
-            <div>
-              <div className="xs:pt-10 md:pt-8">
-                <PageTitle>Ciao!</PageTitle>
-                <div className="pt-5 text-2xl md:text-4xl leading-tight sm:leading-snug tracking-tight">
-                  <p>
-                    Sono{" "}
-                    <span className="text-yellow-600">Stefano Tambellini</span>
-                    , un web designer e sviluppatore software con sede a Lucca.
-                    <br />
-                    Mi piacciono l'arte digitale, la pizza capricciosa e i
-                    videogiochi indipendenti.
-                  </p>
+        <div className="w-100 container mx-auto pl-4 pb-12 sm:pl-8 xl:pb-24 xl:pl-32">
+          <div className="antialiased">
+            <main className="mb-auto md:max-w-4xl">
+              <div>
+                <div className="xs:pt-10 md:pt-8">
+                  <PageTitle>
+                    Ciao, sono <span className="text-yellow-600">Stefano</span>
+                  </PageTitle>
 
                   <br />
 
-                  <p>
-                    Sono sempre alla ricerca di progetti interessanti e
-                    d'ispirazione!
+                  <div className="text-2xl md:text-4xl leading-tight sm:leading-snug tracking-tighter whitespace-pre-line">
+                    <p>
+                      Sono un web designer e sviluppatore software di Lucca.
+                      <br />
+                      Amo l'arte digitale, la pizza capricciosa e i videogiochi
+                      indipendenti.
+                    </p>
+
                     <br />
-                    Se vuoi collaborare con me o fare due chiacchiere{" "}
-                    <CustomLink href={`mailto:${siteMetadata.email}`}>
-                      contattami!
-                    </CustomLink>
-                  </p>
+
+                    <p>
+                      Sono sempre alla ricerca di progetti interessanti e
+                      d'ispirazione!
+                      <br />
+                      Se vuoi collaborare con me o fare due chiacchiere{" "}
+                      <CustomLink href={`mailto:${siteMetadata.email}`}>
+                        contattami!
+                      </CustomLink>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </main>
+            </main>
+          </div>
 
           <Footer />
         </div>
-      </Container>
+      </div>
     </>
   );
 };

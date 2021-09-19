@@ -11,7 +11,7 @@ const WebGL: FunctionComponent = () => {
 
   useEffect(() => {
     if (!mount || !mount.current) {
-      console.error("Errore!!!");
+      console.error("Errore mount webgl");
       return;
     }
 
@@ -22,11 +22,11 @@ const WebGL: FunctionComponent = () => {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(100, width / height, 0.1, 10000);
-    camera.position.x = 45;
+    camera.position.x = -45;
     camera.position.y = 10;
     camera.position.z = 30;
 
-    camera.rotation.z = -2;
+    camera.rotation.z = -1;
 
     const uniforms = {
       iTime: { type: "f", value: 0 },
@@ -53,7 +53,7 @@ const WebGL: FunctionComponent = () => {
       preserveDrawingBuffer: true,
       precision: "highp",
       powerPreference: "low-power",
-      logarithmicDepthBuffer: true
+      logarithmicDepthBuffer: true,
     });
     renderer.setSize(width, height);
 
@@ -127,14 +127,14 @@ const WebGL: FunctionComponent = () => {
   return (
     <div
       ref={mount}
+      className="mix-blend-exclusion z-0"
       style={{
         position: "fixed",
         top: 0,
         right: 0,
         bottom: 0,
         left: 0,
-        zIndex: -100,
-        opacity: 1,
+        willChange: "opacity",
       }}
     />
   );

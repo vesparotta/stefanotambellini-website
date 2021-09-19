@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       screen: {
-        "xs": "580px"
+        xs: "580px",
       },
       fontFamily: {
         sans: ["CustomSans-Bold", ...defaultTheme.fontFamily.sans],
