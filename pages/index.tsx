@@ -21,20 +21,30 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="flex z-50 fixed">
+      <div className="z-50 fixed p-6">
         <ThemeSwitch />
       </div>
 
       <div
-        className="flex flex-col justify-end align-center"
+        className="flex flex-col justify-end align-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
         style={{
           height: height?.toString() + "px",
+          isolation: "isolate",
+          willChange: "opacity",
         }}
       >
         <WebGL />
 
-        <div className="w-100 container mx-auto pl-4 pb-12 sm:pl-8 xl:pb-24 xl:pl-32">
-          <div className="antialiased">
+        <div
+          className="mix-blend-exclusion fixed z-30 w-100 container mx-auto p-4 pb-12 sm:p-8 md:p-12 lg:p-18 xl:pb-24 xl:p-32 box-shadow"
+          style={{ willChange: "opacity" }}
+        >
+          <div
+            className="antialiased text-gray-100"
+            style={{
+              textShadow: "0 2px 4px rgba(0,0,0,0.10)",
+            }}
+          >
             <main className="mb-auto md:max-w-4xl">
               <div>
                 <div className="xs:pt-10 md:pt-8">
@@ -67,9 +77,8 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </main>
+            <Footer />
           </div>
-
-          <Footer />
         </div>
       </div>
     </>

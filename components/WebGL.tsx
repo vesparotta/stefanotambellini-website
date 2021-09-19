@@ -127,13 +127,13 @@ const WebGL: FunctionComponent = () => {
   return (
     <div
       ref={mount}
-      className="mix-blend-exclusion z-0"
       style={{
         position: "fixed",
         top: 0,
         right: 0,
         bottom: 0,
         left: 0,
+        zIndex: 10,
         willChange: "opacity",
       }}
     />
