@@ -26,7 +26,7 @@ const Home: NextPage = () => {
       </div>
 
       <div
-        className="flex flex-col justify-end align-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+        className="overflow-auto w-100 bg-gray-100 dark:bg-gray-900"
         style={{
           height: height?.toString() + "px",
           isolation: "isolate",
@@ -36,25 +36,28 @@ const Home: NextPage = () => {
         <WebGL />
 
         <div
-          className="mix-blend-exclusion fixed z-30 w-100 container mx-auto p-4 pb-12 sm:p-8 md:p-12 lg:p-18 xl:pb-24 xl:p-32 box-shadow"
-          style={{ willChange: "opacity" }}
+          className="mix-blend-exclusion relative z-30 pt-56 sm:pt-60 md:pt-72 xl:pt-80 landscape:pt-10 px-4 sm:px-8 md:px-20 lg:px-18 xl:px-48"
+          style={{
+            minHeight: "min-content",
+            willChange: "opacity",
+          }}
         >
           <div
             className="antialiased text-gray-100"
             style={{
-              textShadow: "0 2px 4px rgba(0,0,0,0.10)",
+              textShadow: "0 2px 4px rgba(255,255,255,0.10)",
             }}
           >
-            <main className="mb-auto md:max-w-4xl">
+            <main className="md:max-w-4xl">
               <div>
-                <div className="xs:pt-10 md:pt-8">
+                <div>
                   <PageTitle>
                     Ciao, sono <span className="text-yellow-600">Stefano</span>
                   </PageTitle>
 
                   <br />
 
-                  <div className="text-2xl md:text-4xl leading-tight sm:leading-snug tracking-tighter whitespace-pre-line">
+                  <div className="text-2xl sm:text-3xl md:text-4xl leading-tight sm:leading-snug tracking-tighter whitespace-pre-line">
                     <p>
                       Sono un web designer e sviluppatore software di Lucca.
                       <br />
@@ -77,6 +80,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </main>
+
             <Footer />
           </div>
         </div>

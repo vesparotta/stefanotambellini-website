@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       screen: {
         xs: "580px",
+        portrait: { raw: "(orientation: portrait)" },
+        landscape: { raw: "(orientation: landscape)" },
       },
       fontFamily: {
         sans: ["CustomSans-Bold", ...defaultTheme.fontFamily.sans],
