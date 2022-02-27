@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import { ExternalLinkIcon } from "@heroicons/react/solid";
 
 export interface CustomLinkProps {
   href: string;
@@ -13,10 +12,7 @@ const CustomLink: FunctionComponent<CustomLinkProps> = ({ href, ...rest }) => {
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <a
-          className="underline text-blue-600 hover:text-blue-800"
-          {...rest}
-        />
+        <a className="underline text-blue-600 hover:text-blue-800" {...rest} />
       </Link>
     );
   }
@@ -35,7 +31,8 @@ const CustomLink: FunctionComponent<CustomLinkProps> = ({ href, ...rest }) => {
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className="underline text-blue-600 hover:text-blue-800"
+      className="underline text-blue-600 hover:text-blue-800 font-extralight"
+      style={{ fontStyle: "italic", fontFamily: "CustomSans-Medium" }}
       href={href}
       {...rest}
     ></a>

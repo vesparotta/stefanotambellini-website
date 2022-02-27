@@ -2,7 +2,15 @@
   font-family: "CustomSans-Bold";
   src: url("/fonts/Karla/Karla-VariableFont_wght.ttf");
   font-style: bold;
-  font-weight: 700;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CustomSans-Medium";
+  src: url("/fonts/Karla/Karla-VariableFont_wght.ttf");
+  font-style: normal;
+  font-weight: 500;
   font-display: swap;
 }
 
@@ -14,11 +22,6 @@ body {
   height: 100%;
 
   scroll-behavior: smooth;
-}
-
-// DA FIXARE
-:not(.dark) .mix-blend-exclusion svg {
-  filter: invert(100%);
 }
 
 /* GLASS */

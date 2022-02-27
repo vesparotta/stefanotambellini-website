@@ -1,91 +1,111 @@
 import type { NextPage } from "next";
-import Footer from "../components/Footer";
-import Container from "../components/Container";
-import PageTitle from "../components/PageTitle";
-import ThemeSwitch from "../components/ThemeSwitch";
-import CustomLink from "../components/CustomLink";
-import siteMetadata from "../data/siteMetadata";
-import WebGL from "../components/WebGL";
 import { useEffect, useState } from "react";
+import CustomLink from "../components/CustomLink";
+import Footer from "../components/Footer";
+import PageTitle from "../components/PageTitle";
+import ThemeSwitcher from "../components/ThemeSwitch";
+import WebGL from "../components/WebGL";
+import messages from "../data/messages";
+import siteMetadata from "../data/siteMetadata";
 
 const Home: NextPage = () => {
-  const [height, setHeight] = useState<number | null>();
+  let [locale, setLocale] = useState("en");
 
-  useEffect(() => {
-    setHeight(document.documentElement?.clientHeight || window.innerHeight);
+  useEffect(function onFirstMount() {
+    let browserLocale = window.navigator.language.split("-")[0];
 
-    window.addEventListener("resize", () => {
-      setHeight(document.documentElement?.clientHeight || window.innerHeight);
-    });
+    if (browserLocale !== "it") {
+      browserLocale = "en";
+    }
+
+    setLocale(browserLocale);
   }, []);
 
   return (
-    <>
-      <div className="z-50 fixed p-6">
-        <ThemeSwitch />
-      </div>
-
-      <div
-        className="overflow-auto w-100 bg-gray-100 dark:bg-gray-900"
-        style={{
-          height: height?.toString() + "px",
-          isolation: "isolate",
-          willChange: "opacity",
-        }}
-      >
+    <div className="p-8 sm:p-12 md:p-16 lg:24">
+      <div>
         <WebGL />
 
         <div
-          className="mix-blend-exclusion relative z-30 pt-56 sm:pt-60 md:pt-72 xl:pt-80 landscape:pt-10 px-4 sm:px-8 md:px-20 lg:px-18 xl:px-48"
+          className="relative z-30"
           style={{
             minHeight: "min-content",
-            willChange: "opacity",
           }}
         >
           <div
-            className="antialiased text-gray-100"
+            className="antialiased"
             style={{
               textShadow: "0 2px 4px rgba(255,255,255,0.10)",
             }}
           >
-            <main className="md:max-w-4xl">
-              <div>
-                <div>
-                  <PageTitle>
-                    Ciao, sono <span className="text-yellow-600">Stefano</span>
-                  </PageTitle>
+            <div className="md:max-w-4xl">
+              <PageTitle>
+                {messages.ciaoSono[locale]}{" "}
+                <span
+                  style={{
+                    backgroundImage: "url(./curcuma.jpeg)",
+                    backgroundColor: "rgb(255,180,4)",
+                    backgroundBlendMode: "saturation",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    padding: "0.1em",
+                  }}
+                >
+                  Stefano
+                </span>
+              </PageTitle>
 
-                  <br />
+              <br />
+              <br />
 
-                  <div className="text-2xl sm:text-3xl md:text-4xl leading-tight sm:leading-snug tracking-tighter whitespace-pre-line">
-                    <p>
-                      Sono un web designer e sviluppatore software di Lucca.
-                      <br />
-                      Amo l'arte digitale, la pizza capricciosa e i videogiochi
-                      indipendenti.
-                    </p>
+              <div className="text-2xl md:text-4xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
+                <p>
+                  {messages.presentazione[locale]}
+                  {/* <br />
+                  Amo l'arte digitale, la pizza capricciosa e i videogiochi
+                  indipendenti. */}
+                </p>
 
-                    <br />
+                {/* <p>
+                  Sono sempre alla ricerca di progetti interessanti e
+                  d'ispirazione!
+                </p>
 
-                    <p>
-                      Sono sempre alla ricerca di progetti interessanti e
-                      d'ispirazione!
-                      <br />
-                      Se vuoi collaborare con me o fare due chiacchiere{" "}
-                      <CustomLink href={`mailto:${siteMetadata.email}`}>
-                        contattami!
-                      </CustomLink>
-                    </p>
-                  </div>
-                </div>
+                <br /> */}
+
+                <p>
+                  <span>
+                    {messages.contattamiA[locale]}
+                    {": "}
+                  </span>
+                  <CustomLink href={`mailto:${siteMetadata.email}`}>
+                    {siteMetadata.email}
+                  </CustomLink>
+                </p>
               </div>
-            </main>
 
-            <Footer />
+              <br />
+              <br />
+
+              <div className="text-xl md:text-3xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
+                <p>
+                  <span className="mr-1">
+                    {messages.puoiAncheSeguirmiA[locale]}
+                    {": "}
+                  </span>
+
+                  <Footer />
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </>
+
+      <div className="z-50 fixed bottom-10 right-20">
+        <ThemeSwitcher />
+      </div>
+    </div>
   );
 };
 

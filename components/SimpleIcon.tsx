@@ -1,16 +1,14 @@
-import Mail from "../assets/social-icons/mail.svg";
-import Github from "../assets/social-icons/github.svg";
+import { FunctionComponent } from "react";
 import Facebook from "../assets/social-icons/facebook.svg";
-import Youtube from "../assets/social-icons/youtube.svg";
+import Github from "../assets/social-icons/github.svg";
+import Instagram from "../assets/social-icons/instagram.svg";
 import Linkedin from "../assets/social-icons/linkedin.svg";
 import Twitter from "../assets/social-icons/twitter.svg";
-import Instagram from "../assets/social-icons/instagram.svg";
-import { FunctionComponent } from "react";
+import Youtube from "../assets/social-icons/youtube.svg";
 
 // https://simpleicons.org/
 
 const components = {
-  mail: Mail,
   github: Github,
   facebook: Facebook,
   youtube: Youtube,
@@ -34,12 +32,9 @@ const SocialIcon: FunctionComponent<SocialIconProps> = ({
   href: string;
   size: number;
 }) => {
-  if (
-    !href ||
-    (kind === "mail" &&
-      !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href))
-  )
+  if (!href) {
     return null;
+  }
 
   //@ts-ignore
   const SocialSvg = components[kind];
@@ -50,10 +45,13 @@ const SocialIcon: FunctionComponent<SocialIconProps> = ({
       target="_blank"
       rel="noopener noreferrer"
       href={href}
+      style={{ display: "inline-block" }}
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg
-        className={`fill-current hover:text-blue-500 dark:hover:text-blue-400 h-${size} w-${size}`}
+        height={Math.floor(size * 10)}
+        width={Math.floor(size * 10)}
+        className={`fill-current hover:text-blue-500 dark:hover:text-blue-400`}
       />
     </a>
   );
