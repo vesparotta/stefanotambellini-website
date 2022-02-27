@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:full": "next build && next export",
+    "postbuild": "next-sitemap",
+    "build:full": "npm run build && next export",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "storybook": "start-storybook --ci -p 6006",
@@ -33,6 +34,7 @@
     "@types/three": "^0.137.0",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
+    "next-sitemap": "^2.5.1",
     "postcss": "^8.4.7",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.4.1",

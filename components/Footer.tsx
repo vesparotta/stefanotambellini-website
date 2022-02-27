@@ -11,8 +11,8 @@ const iconSize = 3;
  */
 const Footer: FunctionComponent = () => {
   return (
-    <span style={{ display: "inline-block", verticalAlign: "sub" }}>
-      <span className="flex space-x-2 justify-around">
+    <span className="py-2" style={{ display: "inline-block", verticalAlign: "sub" }}>
+      <span className="flex space-x-4 justify-around">
         <SocialIcon
           kind="instagram"
           href={siteMetadata.instagram}

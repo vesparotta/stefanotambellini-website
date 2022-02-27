@@ -4,8 +4,8 @@ export default {
     en: "Hi! I am",
   },
   presentazione: {
-    it: "Sono un web designer e sviluppatore software di Lucca",
-    en: "I'm a web designer and software developer from Lucca, Italy"
+    it: "Sono un web designer e sviluppatore software di Lucca.",
+    en: "I'm a web designer and software developer from Lucca, Italy."
   },
   contattamiA: {
     it: "Puoi contattarmi a",

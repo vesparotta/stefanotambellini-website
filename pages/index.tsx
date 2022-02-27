@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   return (
     <>
       {mounted && (
-        <div className="p-8 sm:p-12 md:p-16 lg:24">
+        <div className="p-8 pt-36 sm:p-12 md:p-16 lg:p-24">
           <div>
             <WebGL />
 
@@ -107,9 +107,9 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="z-50 fixed bottom-10 right-20">
+          {/* <div className="z-50 fixed bottom-10 right-10">
             <ThemeSwitcher />
-          </div>
+          </div> */}
         </div>
       )}
     </>
