@@ -11,6 +11,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute="class">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Stefano Tambellini</title>
       </Head>
       <Analytics />
       <Component {...pageProps} />

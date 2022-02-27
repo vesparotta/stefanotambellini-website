@@ -61,22 +61,11 @@ const Home: NextPage = () => {
                   </PageTitle>
 
                   <br />
-                  <br />
 
                   <div className="text-2xl md:text-4xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
-                    <p>
-                      {messages.presentazione[locale]}
-                      {/* <br />
-                  Amo l'arte digitale, la pizza capricciosa e i videogiochi
-                  indipendenti. */}
-                    </p>
+                    <p>{messages.presentazione[locale]}</p>
 
-                    {/* <p>
-                  Sono sempre alla ricerca di progetti interessanti e
-                  d'ispirazione!
-                </p>
-
-                <br /> */}
+                    <br />
 
                     <p>
                       <span>
