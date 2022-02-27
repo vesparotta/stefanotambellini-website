@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import CustomLink from "../components/CustomLink";
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
-import ThemeSwitcher from "../components/ThemeSwitch";
 import WebGL from "../components/WebGL";
 import messages from "../data/messages";
 import siteMetadata from "../data/siteMetadata";
