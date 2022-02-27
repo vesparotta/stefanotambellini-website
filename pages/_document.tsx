@@ -11,6 +11,12 @@ class MyDocument extends Document {
             as="font"
             crossOrigin=""
           />
+          <link
+            rel="preload"
+            href="/fonts/Karla/Karla-Italic-VariableFont_wght.ttf"
+            as="font"
+            crossOrigin=""
+          />
         </Head>
 
         <body className="bg-gray-100 dark:bg-gray-900">
