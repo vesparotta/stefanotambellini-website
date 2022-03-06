@@ -73,11 +73,6 @@ const WebGL: FunctionComponent = () => {
 
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    composer.addPass(badTVPass);
-    composer.addPass(rgbPass);
-    composer.addPass(filmPass);
-    composer.addPass(staticPass);
-    composer.addPass(copyPass);
 
     const pixelPass = new ShaderPass(PixelShader);
     pixelPass.uniforms["resolution"].value = new THREE.Vector2(width, height);
@@ -85,7 +80,13 @@ const WebGL: FunctionComponent = () => {
       window.devicePixelRatio
     );
     pixelPass.uniforms["pixelSize"].value = 6;
+
     composer.addPass(pixelPass);
+    composer.addPass(badTVPass);
+    composer.addPass(rgbPass);
+    composer.addPass(filmPass);
+    composer.addPass(staticPass);
+    composer.addPass(copyPass);
 
     const renderScene = () => {
       // renderer.render(scene, camera);
@@ -161,7 +162,7 @@ const WebGL: FunctionComponent = () => {
         frameId = requestAnimationFrame(animate);
 
         // @ts-ignore
-        mount.current?.style.opacity = "0.5";
+        mount.current?.style.opacity = "0.77";
       }
     };
 
@@ -226,7 +227,8 @@ const WebGL: FunctionComponent = () => {
         bottom: 0,
         left: 0,
         zIndex: 10,
-        mixBlendMode: "exclusion",
+        mixBlendMode: "difference",
+        willChange: "opacity",
         transition: "opacity 1.5s cubic-bezier(0.4, 0, 1, 1)",
         opacity: 0,
       }}
