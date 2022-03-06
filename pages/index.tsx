@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CustomLink from "../components/CustomLink";
 import Footer from "../components/Footer";
 import PageTitle from "../components/PageTitle";
+import ThemeSwitcher from "../components/ThemeSwitch";
 import WebGL from "../components/WebGL";
 import messages from "../data/messages";
 import siteMetadata from "../data/siteMetadata";
@@ -26,9 +27,11 @@ const Home: NextPage = () => {
   return (
     <>
       {mounted && (
-        <div className="p-8 pt-36 sm:p-12 md:p-16 lg:p-24">
+        <div className="p-4 pt-36 sm:p-12 md:p-16 lg:p-24">
           <div>
             <WebGL />
+
+            {/* <VideoVHS /> */}
 
             <div
               className="relative z-30"
@@ -44,24 +47,25 @@ const Home: NextPage = () => {
               >
                 <div className="md:max-w-4xl">
                   <PageTitle>
-                    {messages.ciaoSono[locale]}{" "}
+                    {/* {messages.ciaoSono[locale]}{" "} */}
                     <span
-                      style={{
+                      className="crt"
+                      /* style={{
                         backgroundImage: "url(./curcuma.jpeg)",
                         backgroundColor: "rgb(255,180,4)",
                         backgroundBlendMode: "saturation",
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         padding: "0.1em",
-                      }}
+                      }} */
                     >
-                      Stefano
+                      Stefano{"\n"}Tambellini
                     </span>
                   </PageTitle>
 
                   <br />
 
-                  <div className="text-2xl md:text-4xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
+                  <div className="text-xl md:text-2xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
                     <p>{messages.presentazione[locale]}</p>
 
                     <br />
@@ -69,7 +73,7 @@ const Home: NextPage = () => {
                     <p>
                       <span>
                         {messages.contattamiA[locale]}
-                        {": "}
+                        {":\n"}
                       </span>
                       <CustomLink href={`mailto:${siteMetadata.email}`}>
                         {siteMetadata.email}
@@ -80,11 +84,11 @@ const Home: NextPage = () => {
                   <br />
                   <br />
 
-                  <div className="text-xl md:text-3xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
+                  <div className="text-xl md:text-2xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
                     <p>
                       <span className="mr-1">
                         {messages.puoiAncheSeguirmiA[locale]}
-                        {": "}
+                        {":\n"}
                       </span>
 
                       <Footer />
@@ -95,9 +99,9 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          {/* <div className="z-50 fixed bottom-10 right-10">
+          <div className="z-50 fixed bottom-10 right-10">
             <ThemeSwitcher />
-          </div> */}
+          </div>
         </div>
       )}
     </>

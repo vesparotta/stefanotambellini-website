@@ -7,13 +7,7 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="preload"
-            href="/fonts/Karla/Karla-VariableFont_wght.ttf"
-            as="font"
-            crossOrigin=""
-          />
-          <link
-            rel="preload"
-            href="/fonts/Karla/Karla-Italic-VariableFont_wght.ttf"
+            href="/fonts/Nintendoid1.ttf"
             as="font"
             crossOrigin=""
           />

@@ -12,7 +12,7 @@ module.exports = {
         landscape: { raw: "(orientation: landscape)" },
       },
       fontFamily: {
-        sans: ["CustomSans-Bold", ...defaultTheme.fontFamily.sans],
+        sans: ["Nintendoid1", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.teal,

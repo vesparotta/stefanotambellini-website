@@ -31,8 +31,7 @@ const CustomLink: FunctionComponent<CustomLinkProps> = ({ href, ...rest }) => {
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className="underline text-blue-600 dark:text-blue-400 hover:text-blue-800 font-extralight"
-      style={{ fontStyle: "italic", fontFamily: "CustomSans-Medium" }}
+      className="underline text-blue-600 dark:text-blue-400 hover:text-blue-800 font-extralight text-sm sm:text-lg md:text-xl"
       href={href}
       {...rest}
     ></a>
