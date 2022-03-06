@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "cross-env NODE_ENV=development next dev",
+    "build": "next build && next export",
     "postbuild": "next-sitemap",
-    "build:full": "npm run build && next export",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "storybook": "start-storybook --ci -p 6006",
@@ -18,7 +17,7 @@
     "next-themes": "^0.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "three": "^0.138.0"
+    "three": "^0.138.3"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -34,6 +33,7 @@
     "@types/three": "^0.137.0",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
     "next-sitemap": "^2.5.1",
     "postcss": "^8.4.7",
     "postcss-flexbugs-fixes": "^5.0.2",

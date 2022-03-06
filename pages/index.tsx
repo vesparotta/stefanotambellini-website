@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import CustomLink from "../components/CustomLink";
-import Footer from "../components/Footer";
+import { SocialLinks } from "../components/Footer";
 import PageTitle from "../components/PageTitle";
 import ThemeSwitcher from "../components/ThemeSwitch";
 import WebGL from "../components/WebGL";
@@ -19,6 +19,9 @@ const Home: NextPage = () => {
       browserLocale = "en";
     }
 
+    // Resetto il tema all'avvio
+    localStorage.removeItem("themeStorageKey");
+
     setLocale(browserLocale);
 
     setMounted(true);
@@ -27,11 +30,9 @@ const Home: NextPage = () => {
   return (
     <>
       {mounted && (
-        <div className="p-4 pt-36 sm:p-12 md:p-16 lg:p-24">
+        <div className="relative p-4 pt-36 sm:p-12 md:p-16 lg:p-24">
           <div>
             <WebGL />
-
-            {/* <VideoVHS /> */}
 
             <div
               className="relative z-30"
@@ -48,19 +49,7 @@ const Home: NextPage = () => {
                 <div className="md:max-w-4xl">
                   <PageTitle>
                     {/* {messages.ciaoSono[locale]}{" "} */}
-                    <span
-                      className="crt"
-                      /* style={{
-                        backgroundImage: "url(./curcuma.jpeg)",
-                        backgroundColor: "rgb(255,180,4)",
-                        backgroundBlendMode: "saturation",
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                        padding: "0.1em",
-                      }} */
-                    >
-                      Stefano{"\n"}Tambellini
-                    </span>
+                    <span>Stefano{"\n"}Tambellini</span>
                   </PageTitle>
 
                   <br />
@@ -86,22 +75,24 @@ const Home: NextPage = () => {
 
                   <div className="text-xl md:text-2xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
                     <p>
-                      <span className="mr-1">
+                      {/* <span className="mr-1">
                         {messages.puoiAncheSeguirmiA[locale]}
                         {":\n"}
-                      </span>
-
-                      <Footer />
+                      </span> */}
                     </p>
                   </div>
                 </div>
               </div>
+
+              <SocialLinks />
             </div>
           </div>
 
-          <div className="z-50 fixed bottom-10 right-10">
-            <ThemeSwitcher />
-          </div>
+          {process.env.NODE_ENV === "development" && (
+            <div className="z-50 fixed bottom-10 right-10">
+              <ThemeSwitcher />
+            </div>
+          )}
         </div>
       )}
     </>

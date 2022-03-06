@@ -1,10 +1,15 @@
-import { FunctionComponent, useEffect, useRef, useState } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import * as THREE from "three";
-
-// @ts-ignore
-import vert from "../lib/webgl/shaders/shader.vert?raw";
-// @ts-ignore
-import frag from "../lib/webgl/shaders/shader.frag?raw";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
+import { PixelShader } from "three/examples/jsm/shaders/PixelShader.js";
+import { BadTVShader } from "../lib/webgl/shaders/BadTVShader";
+import { CopyShader } from "../lib/webgl/shaders/CopyShader";
+import { FilmShader } from "../lib/webgl/shaders/FilmShader";
+import { MyShader } from "../lib/webgl/shaders/MyShader";
+import { RGBShiftShader } from "../lib/webgl/shaders/RGBShiftShader";
+import { StaticShader } from "../lib/webgl/shaders/StaticShader";
 
 const WebGL: FunctionComponent = () => {
   const mount = useRef<HTMLDivElement>(null);
@@ -25,20 +30,14 @@ const WebGL: FunctionComponent = () => {
     camera.position.x = -45;
     camera.position.y = 10;
     camera.position.z = 30;
-
     camera.rotation.z = -1;
-
-    const uniforms = {
-      iTime: { type: "f", value: 0 },
-      iResolution: { value: new THREE.Vector3() },
-    };
 
     const material = new THREE.ShaderMaterial({
       side: THREE.DoubleSide,
-      uniforms: uniforms,
-      wireframe: true,
-      vertexShader: vert,
-      fragmentShader: frag,
+      uniforms: MyShader.uniforms,
+      wireframe: false,
+      vertexShader: MyShader.vertexShader,
+      fragmentShader: MyShader.fragmentShader,
     });
 
     const geometry = new THREE.TorusBufferGeometry(21, 31, 128, 256, 8);
@@ -56,16 +55,98 @@ const WebGL: FunctionComponent = () => {
       logarithmicDepthBuffer: true,
     });
     renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // CONTROLLI
+    // const controls = new TrackballControls(camera, renderer.domElement);
+    // controls.rotateSpeed = 2.0;
+    // controls.panSpeed = 0.8;
+    // controls.zoomSpeed = 1.5;
+
+    let badTVPass = new ShaderPass(BadTVShader),
+      rgbPass = new ShaderPass(RGBShiftShader),
+      filmPass = new ShaderPass(FilmShader),
+      staticPass = new ShaderPass(StaticShader),
+      copyPass = new ShaderPass(CopyShader);
+
+    // COMPOSER
+
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    composer.addPass(badTVPass);
+    composer.addPass(rgbPass);
+    composer.addPass(filmPass);
+    composer.addPass(staticPass);
+    composer.addPass(copyPass);
+
+    const pixelPass = new ShaderPass(PixelShader);
+    pixelPass.uniforms["resolution"].value = new THREE.Vector2(width, height);
+    pixelPass.uniforms["resolution"].value.multiplyScalar(
+      window.devicePixelRatio
+    );
+    pixelPass.uniforms["pixelSize"].value = 6;
+    composer.addPass(pixelPass);
 
     const renderScene = () => {
-      renderer.render(scene, camera);
+      // renderer.render(scene, camera);
+      composer.render();
     };
+
+    filmPass.uniforms.grayscale.value = 0;
+
+    let badTVParams = {
+      mute: true,
+      show: true,
+      distortion: 0.4,
+      distortion2: 1.6,
+      speed: 0.01,
+      rollSpeed: 0.01,
+    };
+
+    let staticParams = {
+      show: true,
+      amount: 0.04,
+      size: 4.0,
+    };
+
+    let rgbParams = {
+      show: true,
+      amount: 0.0128,
+      angle: 1.0,
+    };
+
+    let filmParams = {
+      show: true,
+      count: 800,
+      sIntensity: 0.9,
+      nIntensity: 0.4,
+    };
+
+    //copy gui params into shader uniforms
+    badTVPass.uniforms["distortion"].value = badTVParams.distortion;
+    badTVPass.uniforms["distortion2"].value = badTVParams.distortion2;
+    badTVPass.uniforms["speed"].value = badTVParams.speed;
+    badTVPass.uniforms["rollSpeed"].value = badTVParams.rollSpeed;
+
+    staticPass.uniforms["amount"].value = staticParams.amount;
+    staticPass.uniforms["size"].value = staticParams.size;
+
+    rgbPass.uniforms["angle"].value = rgbParams.angle * Math.PI;
+    rgbPass.uniforms["amount"].value = rgbParams.amount;
+
+    filmPass.uniforms["sCount"].value = filmParams.count;
+    filmPass.uniforms["sIntensity"].value = filmParams.sIntensity;
+    filmPass.uniforms["nIntensity"].value = filmParams.nIntensity;
 
     const animate: FrameRequestCallback = (time) => {
       time *= 0.001;
 
       material.uniforms.iResolution.value.set(width, height, 1);
       material.uniforms.iTime.value = time;
+
+      badTVPass.uniforms["time"].value = time * 0.05;
+      filmPass.uniforms["time"].value = time;
+      staticPass.uniforms["time"].value = time;
 
       mesh.rotateX(0.002);
       mesh.rotateY(-0.004);
@@ -78,6 +159,9 @@ const WebGL: FunctionComponent = () => {
     const start = () => {
       if (!frameId) {
         frameId = requestAnimationFrame(animate);
+
+        // @ts-ignore
+        mount.current?.style.opacity = "0.5";
       }
     };
 
@@ -97,9 +181,17 @@ const WebGL: FunctionComponent = () => {
 
       width = mount.current.clientWidth;
       height = mount.current.clientHeight;
-      renderer.setSize(width, height);
+
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+
+      renderer.setSize(width, height);
+
+      pixelPass.uniforms["resolution"].value = new THREE.Vector2(width, height);
+      pixelPass.uniforms["resolution"].value.multiplyScalar(
+        window.devicePixelRatio
+      );
+
       renderScene();
     };
 
@@ -134,6 +226,9 @@ const WebGL: FunctionComponent = () => {
         bottom: 0,
         left: 0,
         zIndex: 10,
+        mixBlendMode: "exclusion",
+        transition: "opacity 1.5s cubic-bezier(0.4, 0, 1, 1)",
+        opacity: 0,
       }}
     />
   );

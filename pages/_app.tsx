@@ -8,7 +8,7 @@ import "../css/global.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider defaultTheme="system" attribute="class" storageKey="themeStorageKey">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 

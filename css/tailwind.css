@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .crt {
+    animation: textShadow 1.6s infinite;
+  }
+}
