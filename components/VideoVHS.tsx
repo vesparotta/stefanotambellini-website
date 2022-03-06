@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 //Bad TV Shader Demo
 //Using Three.js r.75
 //by Felix Turner / www.airtight.cc / @felixturner
