@@ -4,7 +4,7 @@ export default {
     en: "Hi, I am",
   },
   presentazione: {
-    it: "Web designer e digital creator di Lucca, Toscana",
+    it: "Web designer e digital creator di Lucca.",
     en: "Web designer and digital creator from Lucca, Italy"
   },
   contattamiA: {

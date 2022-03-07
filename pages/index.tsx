@@ -30,7 +30,7 @@ const Home: NextPage = () => {
   return (
     <>
       {mounted && (
-        <div className="relative p-4 pt-36 sm:p-12 md:p-16 lg:p-24">
+        <div className="relative p-4 pt-36 sm:p-12 md:p-16 lg:p-24 break-words overflow-hidden">
           <div>
             <WebGL />
 
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
 
                   <br />
 
-                  <div className="text-xl md:text-2xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
+                  <div className="text-xs xs:text-base sm:text-xl md:text-2xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
                     <p>{messages.presentazione[locale]}</p>
 
                     <br />
@@ -73,18 +73,9 @@ const Home: NextPage = () => {
                   <br />
                   <br />
 
-                  <div className="text-xl md:text-2xl leading-tight sm:leading-snug tracking-tight whitespace-pre-line">
-                    <p>
-                      {/* <span className="mr-1">
-                        {messages.puoiAncheSeguirmiA[locale]}
-                        {":\n"}
-                      </span> */}
-                    </p>
-                  </div>
+                  <SocialLinks />
                 </div>
               </div>
-
-              <SocialLinks />
             </div>
           </div>
 
